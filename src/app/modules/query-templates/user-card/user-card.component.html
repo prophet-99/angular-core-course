@@ -1,0 +1,49 @@
+<div class="w-full min-w-80 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+  <div class="flex flex-col items-center py-10" *ngIf="user; else loadTmpl">
+    
+    <img
+      *ngIf="user.thumbnail; else notContenImgTmpl"
+      class="w-24 h-24 mb-3 rounded-full shadow-lg"
+      [src]="user.thumbnail"
+      [alt]="user.name"
+    />
+    
+    <h5 #userNameId class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+      {{ user.name }}
+    </h5>
+    
+    <ng-container *ngIf="user.role !== 'Admin'">
+      <span class="text-sm text-gray-900 dark:text-white">
+        {{ user.email }}
+      </span>
+      <span class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+        🗺 {{ user.address.city }} - {{ user.address.country }}
+      </span>
+    </ng-container>
+
+    <span class="mt-4 md:mt-6 w-fit bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+      {{ user.role }}
+    </span>
+
+    <button
+      type="button"
+      class="mt-4 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
+      (click)="showMore()"
+    >
+      Show more
+    </button>
+  </div>
+</div>
+
+<!-- TEMPLATES -->
+<ng-template #loadTmpl>
+  <section class="p-5">
+    <p class="text-center text-white text-2xl">Loading ...</p>
+  </section>
+</ng-template>
+
+<ng-template #notContenImgTmpl>
+  <ng-container
+      *ngTemplateOutlet="notImageTmpl; context: { $implicit: user?.name, email: user?.email }"
+    />
+</ng-template>

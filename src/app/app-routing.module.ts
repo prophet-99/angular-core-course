@@ -14,6 +14,13 @@ const routes: Routes = [
         (m) => m.AdvancedTemplatesModule
       ),
   },
+  {
+    path: 'query-templates',
+    loadChildren: () =>
+      import('./modules/query-templates/query-templates.module').then(
+        (m) => m.QueryTemplatesModule
+      ),
+  },
 ];
 
 @NgModule({
