@@ -21,6 +21,13 @@ const routes: Routes = [
         (m) => m.QueryTemplatesModule
       ),
   },
+  {
+    path: 'content-projection',
+    loadChildren: () =>
+      import('./modules/content-projection/content-projection.module').then(
+        (m) => m.ContentProjectionModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,53 @@
+<section class="flex flex-wrap gap-4 justify-center">
+  <app-user-card
+    *ngFor="let user of users"
+    #userCard
+    [user]="user"
+    [notImageTmpl]="notImageTmpl"
+  >
+ 
+    <app-user-img
+      slot="user-img"
+      [imgUrl]="user.thumbnail"
+      [imgAlt]="user.name"
+    />
+
+    <ng-container slot="user-content" #userContentPrj>
+      <!-- <div class="flex flex-col items-center js-user-content"> -->
+        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+          {{ user.name }}
+        </h5>
+        <ng-container *ngIf="user.role !== 'Admin'">
+          <span class="text-sm text-gray-900 dark:text-white">
+            {{ user.email }}
+          </span>
+          <span class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            🗺 {{ user.address.city }} - {{ user.address.country }}
+          </span>
+        </ng-container>
+      <!-- </div> -->
+    </ng-container>
+
+    <!-- <textarea></textarea> -->
+    
+  </app-user-card>
+
+  <app-user-card
+    *ngFor="let user of users"
+    #userCard
+    [user]="user"
+    [notImageTmpl]="notImageTmpl"
+  >
+    <app-user-img
+      slot="user-img"
+      [imgUrl]="user.thumbnail"
+      [imgAlt]="user.name"
+    />
+  </app-user-card>
+</section>
+
+<ng-template #notImageTmpl let-userName>
+  <p class="bg-gray-700 text-red-400 border border-red-400 px-1.5 py-2 rounded text-center mb-4 mx-4">
+    {{ userName }} doesn't have an image available
+  </p>
+</ng-template>

@@ -1,0 +1,40 @@
+<div class="w-full min-w-80 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+  <div class="flex flex-col items-center py-10" *ngIf="user; else loadTmpl">
+    
+    <!-- document.querySelector('.js' | '#id' | '[attr]') -->
+    <ng-content select="[slot='user-img']" /> 
+    <ng-content select="[slot='user-content']">
+      <p class="text-white text-center">
+        I'm default content
+      </p>
+    </ng-content>
+    <!-- <ng-content /> -->
+    
+    
+
+    <span class="mt-4 md:mt-6 w-fit bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+      {{ user.role }}
+    </span>
+
+    <button
+      type="button"
+      class="mt-4 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
+      (click)="showMore()"
+    >
+      Show more
+    </button>
+  </div>
+</div>
+
+<!-- TEMPLATES -->
+<ng-template #loadTmpl>
+  <section class="p-5">
+    <p class="text-center text-white text-2xl">Loading ...</p>
+  </section>
+</ng-template>
+
+<ng-template #notContenImgTmpl>
+  <ng-container
+      *ngTemplateOutlet="notImageTmpl; context: { $implicit: user?.name, email: user?.email }"
+    />
+</ng-template>
