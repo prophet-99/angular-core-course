@@ -1,0 +1,15 @@
+// app-user-card
+:host {
+  border-left: 3.5px solid #3b82f6;
+  border-radius: 0.25rem;
+}
+
+::ng-deep .user-email {
+  border-radius: 0.25rem;
+  background-color: #ebe4e414;
+  padding: 0.5em 1rem;
+}
+
+:host-context(.has-blue-theme) .user-card {
+  background-color: #243450;
+}

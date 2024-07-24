@@ -28,6 +28,13 @@ const routes: Routes = [
         (m) => m.ContentProjectionModule
       ),
   },
+  {
+    path: 'view-encapsulation',
+    loadChildren: () =>
+      import('./modules/view-encapsulation/view-encapsulation.module').then(
+        (m) => m.ViewEncapsulationModule
+      ),
+  },
 ];
 
 @NgModule({
