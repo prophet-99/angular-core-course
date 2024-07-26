@@ -35,6 +35,13 @@ const routes: Routes = [
         (m) => m.ViewEncapsulationModule
       ),
   },
+  {
+    path: 'dependency-injection',
+    loadChildren: () =>
+      import('./modules/dependency-injection/dependency-injection.module').then(
+        (m) => m.DependencyInjectionModule
+      ),
+  },
 ];
 
 @NgModule({

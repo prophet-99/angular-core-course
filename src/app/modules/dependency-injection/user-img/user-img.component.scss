@@ -1,0 +1,12 @@
+.user-thumbnail::before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: aliceblue;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  content: "🖼 Not image found!!";
+}
