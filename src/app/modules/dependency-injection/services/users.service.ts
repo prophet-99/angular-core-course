@@ -7,9 +7,7 @@ import { type User } from '../models/user.model';
 import { type UserRemote } from '../models/user-remote.model';
 import { USERS_DATA } from '../data/users.data';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class UsersService {
   public static instanceNumber = 0;
 
