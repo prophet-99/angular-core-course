@@ -42,6 +42,13 @@ const routes: Routes = [
         (m) => m.DependencyInjectionModule
       ),
   },
+  {
+    path: 'change-detection',
+    loadChildren: () =>
+      import('./modules/change-detection/change-detection.module').then(
+        (m) => m.ChangeDetectionModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,28 @@
+<button
+  class="mb-4 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
+  (click)="updateSomeUser()"
+>
+  Update some User
+</button>
+
+<!-- *ngFor="let user of users" -->
+<!-- *ngFor="let user of (users$ | async)" -->
+<section class="flex flex-wrap gap-4 justify-center has-blue-theme">
+  <app-user-card 
+    *ngFor="let user of users"
+    [user]="user"
+    [notImageTmpl]="notImageTmpl"
+  >
+    <app-user-img
+      slot="user-img"
+      [imgUrl]="user.thumbnail"
+      [imgAlt]="user.name"
+    />
+  </app-user-card>
+</section>
+
+<ng-template #notImageTmpl let-userName>
+  <p class="bg-gray-700 text-red-400 border border-red-400 px-1.5 py-2 rounded text-center mb-4 mx-4">
+    {{ userName }} doesn't have an image available
+  </p>
+</ng-template>
